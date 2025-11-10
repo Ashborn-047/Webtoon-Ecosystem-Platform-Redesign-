@@ -8,5 +8,6 @@ export default defineConfig({
     port: 5174,
     strictPort: true,
   },
+  base: '/Webtoon-Ecosystem-Platform-Redesign-/',
 })
 
