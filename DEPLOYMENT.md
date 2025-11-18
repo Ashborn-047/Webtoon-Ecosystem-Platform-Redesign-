@@ -31,14 +31,24 @@ https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/
 If you need to deploy manually:
 
 ```bash
-# Build the project
+# Build the project and refresh the tracked dist/ assets
 npm run build
 
-# The dist folder will be automatically deployed via GitHub Actions
+# Commit the regenerated bundle so GitHub Pages can serve it
 git add dist
-git commit -m "Update build"
+git commit -m "chore: refresh production build"
 git push
 ```
+
+### Keeping GitHub Pages in Sync
+
+If GitHub Actions deployments are disabled or Pages is configured to serve directly from the `main` branch, the new bootstrap logic will load the prebuilt bundle from `dist/assets/app.*`. To avoid a blank page:
+
+1. Run `npm run build` before every push to `main`
+2. Commit the updated `dist/` directory
+3. Verify the live site after GitHub Pages finishes publishing
+
+This gives you a working live page even when GitHub Pages skips the automated build step.
 
 ### Troubleshooting
 

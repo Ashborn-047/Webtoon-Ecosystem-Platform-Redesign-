@@ -116,6 +116,8 @@ npm run build
 
 The production build will be in the `dist` folder.
 
+> **Note:** GitHub Pages serves the `dist/` bundle directly when Actions-based deployments are unavailable. Run `npm run build` before pushing so the tracked `dist/` directory stays in sync with your latest changes.
+
 ### Preview Production Build
 
 ```bash

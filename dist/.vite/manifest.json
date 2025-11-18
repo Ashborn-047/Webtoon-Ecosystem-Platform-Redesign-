@@ -1,0 +1,21 @@
+{
+  "index.html": {
+    "file": "assets/app.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/main.tsx"
+    ]
+  },
+  "src/main.tsx": {
+    "file": "assets/main-DyFpO64E.js",
+    "name": "main",
+    "src": "src/main.tsx",
+    "isDynamicEntry": true
+  },
+  "style.css": {
+    "file": "assets/app.css",
+    "src": "style.css"
+  }
+}

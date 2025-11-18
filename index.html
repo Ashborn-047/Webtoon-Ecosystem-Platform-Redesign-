@@ -8,7 +8,81 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
+
+      const startDevServer = () => import('/src/main.tsx');
+
+      const resolveFromRepoRoot = (relativePath) =>
+        new URL(relativePath, window.location.href).href;
+
+      const loadStylesheet = (href) => {
+        if (document.querySelector(`link[data-webtoon-app-css="${href}"]`)) {
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve, reject) => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = href;
+          link.dataset.webtoonAppCss = href;
+          link.onload = () => resolve();
+          link.onerror = () =>
+            reject(
+              new Error(`Failed to load stylesheet from ${href}`)
+            );
+          document.head.appendChild(link);
+        });
+      };
+
+      const fetchManifest = async () => {
+        const manifestUrl = resolveFromRepoRoot('./dist/.vite/manifest.json');
+        const response = await fetch(manifestUrl, { cache: 'no-cache' });
+        if (!response.ok) {
+          throw new Error(`Unable to load manifest at ${manifestUrl}`);
+        }
+        return response.json();
+      };
+
+      const loadStaticBundle = async () => {
+        const manifest = await fetchManifest();
+        const entry = manifest['src/main.tsx'];
+        if (!entry || !entry.file) {
+          throw new Error('Manifest missing entry for src/main.tsx');
+        }
+
+        const cssFiles = new Set(['assets/app.css', ...(entry.css ?? [])]);
+        await Promise.all(
+          [...cssFiles].map((cssPath) =>
+            loadStylesheet(resolveFromRepoRoot(`./dist/${cssPath}`))
+          )
+        );
+        await import(resolveFromRepoRoot(`./dist/${entry.file}`));
+      };
+
+      const renderErrorState = (error) => {
+        console.error('Failed to bootstrap the Webtoon prototype', error);
+        const root = document.getElementById('root');
+        if (root) {
+          root.innerHTML = `
+            <main style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; max-width: 720px; margin: 0 auto;">
+              <h1 style="color: #111; font-size: 1.75rem; margin-bottom: 0.75rem;">We couldn't load the live prototype.</h1>
+              <p style="color: #444; line-height: 1.6;">
+                Please refresh the page in a moment. If the issue persists, ensure the latest production build has been pushed by running
+                <code style="background: #f3f4f6; padding: 0.25rem 0.35rem; border-radius: 0.35rem; font-size: 0.9rem; color: #111;">npm run build</code> locally before committing.
+              </p>
+            </main>
+          `;
+        }
+      };
+
+      const bootstrap = () =>
+        LOCAL_HOSTS.has(window.location.hostname)
+          ? startDevServer()
+          : loadStaticBundle();
+
+      bootstrap().catch(renderErrorState);
+    </script>
   </body>
 </html>
 

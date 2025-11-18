@@ -9,5 +9,23 @@ export default defineConfig({
     strictPort: true,
   },
   base: '/Webtoon-Ecosystem-Platform-Redesign-/',
+  build: {
+    cssCodeSplit: false,
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    manifest: true,
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/app.js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'assets/app.css'
+          }
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
+    },
+  },
 })
 
