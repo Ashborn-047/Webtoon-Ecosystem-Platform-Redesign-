@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { cn } from "../../ui/utils";
-import { Button } from "../../ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { cn } from "@/components/ui/global/utils";
+import { Button } from "@/components/ui/global/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/global/avatar";
 import { 
   Home, 
   Compass, 

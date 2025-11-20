@@ -1,4 +1,4 @@
-import { Button } from "../../ui/button";
+import { Button } from "@/components/ui/global/button";
 import { ArrowLeft } from "lucide-react";
 
 interface PlaceholderPageProps {

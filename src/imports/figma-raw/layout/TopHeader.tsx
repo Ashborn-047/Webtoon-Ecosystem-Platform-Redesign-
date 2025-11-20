@@ -1,6 +1,6 @@
 import { Search, Bell } from "lucide-react";
-import { Input } from "../../ui/input";
-import { Button } from "../../ui/button";
+import { Input } from "@/components/ui/global/input";
+import { Button } from "@/components/ui/global/button";
 
 export function TopHeader() {
   return (

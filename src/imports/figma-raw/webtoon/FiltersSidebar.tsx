@@ -1,9 +1,9 @@
 import { Filter, Search } from "lucide-react";
-import { Input } from "../../ui/input";
-import { Checkbox } from "../../ui/checkbox";
-import { Label } from "../../ui/label";
-import { ScrollArea } from "../../ui/scroll-area";
-import { cn } from "../../ui/utils";
+import { Input } from "@/components/ui/global/input";
+import { Checkbox } from "@/components/ui/global/checkbox";
+import { Label } from "@/components/ui/global/label";
+import { ScrollArea } from "@/components/ui/global/scroll-area";
+import { cn } from "@/components/ui/global/utils";
 
 interface FiltersSidebarProps {
   className?: string;

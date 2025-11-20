@@ -1,5 +1,5 @@
-import { cn } from "../../ui/utils";
-import { Badge } from "../../ui/badge";
+import { cn } from "@/components/ui/global/utils";
+import { Badge } from "@/components/ui/global/badge";
 import { Play } from "lucide-react";
 
 interface SeriesCardProps {

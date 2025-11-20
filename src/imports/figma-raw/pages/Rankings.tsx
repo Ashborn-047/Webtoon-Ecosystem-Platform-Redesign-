@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-import { Badge } from "../../ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/global/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/global/tabs";
+import { Badge } from "@/components/ui/global/badge";
 import { TrendingUp, ArrowUp, Minus, ArrowDown, Star } from "lucide-react";
 
 export function Rankings() {

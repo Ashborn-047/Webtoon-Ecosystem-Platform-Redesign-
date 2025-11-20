@@ -1,6 +1,6 @@
-import { Button } from "../../ui/button";
-import { Badge } from "../../ui/badge";
-import { Card, CardContent } from "../../ui/card";
+import { Button } from "@/components/ui/global/button";
+import { Badge } from "@/components/ui/global/badge";
+import { Card, CardContent } from "@/components/ui/global/card";
 import { PenTool, MessageSquare, Heart, UserPlus } from "lucide-react";
 
 export function Canvas() {

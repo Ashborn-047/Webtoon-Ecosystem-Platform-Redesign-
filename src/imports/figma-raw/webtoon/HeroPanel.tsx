@@ -1,6 +1,6 @@
-import { cn } from "../../ui/utils";
-import { Button } from "../../ui/button";
-import { Badge } from "../../ui/badge";
+import { cn } from "@/components/ui/global/utils";
+import { Button } from "@/components/ui/global/button";
+import { Badge } from "@/components/ui/global/badge";
 
 interface HeroPanelProps {
   title: string;

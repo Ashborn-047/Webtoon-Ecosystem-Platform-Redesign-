@@ -1,8 +1,8 @@
-import { HeroPanel } from "../ui/HeroPanel";
-import { FiltersSidebar } from "../ui/FiltersSidebar";
-import { SeriesCard } from "../ui/SeriesCard";
-import { SectionHeader } from "../ui/SectionHeader";
-import { Button } from "../../ui/button";
+import { HeroPanel } from "../webtoon/HeroPanel";
+import { FiltersSidebar } from "../webtoon/FiltersSidebar";
+import { SeriesCard } from "../webtoon/SeriesCard";
+import { SectionHeader } from "../webtoon/SectionHeader";
+import { Button } from "@/components/ui/global/button";
 
 export function Categories() {
   // Mock data for the grid

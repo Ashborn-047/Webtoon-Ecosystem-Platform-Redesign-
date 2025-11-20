@@ -1,9 +1,9 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
-import { Button } from "../../ui/button";
-import { Badge } from "../../ui/badge";
-import { Progress } from "../../ui/progress";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/global/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/global/card";
+import { Button } from "@/components/ui/global/button";
+import { Badge } from "@/components/ui/global/badge";
+import { Progress } from "@/components/ui/global/progress";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/global/avatar";
 import { Bell, Settings, LogOut, CreditCard, Shield, Trophy, BarChart } from "lucide-react";
 
 export function Profile() {

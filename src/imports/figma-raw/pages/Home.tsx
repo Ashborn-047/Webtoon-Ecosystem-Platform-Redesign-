@@ -1,6 +1,6 @@
-import { Card, CardContent } from "../../ui/card";
-import { Badge } from "../../ui/badge";
-import { Button } from "../../ui/button";
+import { Card, CardContent } from "@/components/ui/global/card";
+import { Badge } from "@/components/ui/global/badge";
+import { Button } from "@/components/ui/global/button";
 import { Play, TrendingUp, Star, Clock } from "lucide-react";
 
 export function Home() {

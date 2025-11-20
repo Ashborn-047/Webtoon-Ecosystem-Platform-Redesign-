@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/global/card";
 
 export function DataViz() {
   return (

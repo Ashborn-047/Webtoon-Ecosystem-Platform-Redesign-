@@ -1,7 +1,7 @@
-import { Button } from "../../ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../ui/card";
-import { Badge } from "../../ui/badge";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../ui/tabs";
+import { Button } from "@/components/ui/global/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/global/card";
+import { Badge } from "@/components/ui/global/badge";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/global/tabs";
 
 export function DesignSystem() {
   return (
