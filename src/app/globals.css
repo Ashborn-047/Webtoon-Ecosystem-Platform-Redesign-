@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styling file */
+
+/* Webtoon Soft UI Theme - Global Rounding Overrides */
+@layer base {
+  /* Cards, buttons, inputs, containers */
+  .card,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [data-slot="card"] {
+    @apply rounded-wt-md;
+  }
+
+  /* Images */
+  img {
+    @apply rounded-wt-lg;
+  }
+
+  /* Panels & sections */
+  section,
+  [role="region"],
+  [data-slot="panel"] {
+    @apply rounded-wt-xl;
+  }
+}
+
+/* Webtoon Shadow */
+@layer utilities {
+  .shadow-wt {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-wt-lg {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Webtoon Soft Gradients */
+@layer utilities {
+  .bg-webtoon-soft {
+    background: linear-gradient(135deg, rgba(0, 220, 100, 0.05) 0%, rgba(0, 220, 100, 0.02) 100%);
+  }
+
+  .bg-webtoon-soft-dark {
+    background: linear-gradient(135deg, rgba(0, 220, 100, 0.1) 0%, rgba(0, 220, 100, 0.05) 100%);
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* .main-content padding-left removed - LayoutShell now handles offset via margin-left */
