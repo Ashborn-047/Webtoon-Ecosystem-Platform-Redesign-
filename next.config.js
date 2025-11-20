@@ -1,16 +1,19 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Enable static export for GitHub Pages
-  basePath: '/Webtoon-Ecosystem-Platform-Redesign-', // Required for GitHub Pages subdirectory
-  assetPrefix: '/Webtoon-Ecosystem-Platform-Redesign-/', // Required for assets
+  output: 'export', // Required for GitHub Pages static export
+
+  // Must match EXACT GitHub repo name
+  basePath: '/Webtoon-Ecosystem-Platform-Redesign',
+  assetPrefix: '/Webtoon-Ecosystem-Platform-Redesign/',
+
   images: {
     unoptimized: true, // Required for static export
   },
-  trailingSlash: true, // Helps with GitHub Pages routing
-  // Next.js automatically handles @/ path aliases when tsconfig.json has paths configured
-  // No additional configuration needed for path resolution
-}
 
-module.exports = nextConfig
+  trailingSlash: true, // Fixes routing on GitHub Pages
+};
+
+module.exports = nextConfig;
 
