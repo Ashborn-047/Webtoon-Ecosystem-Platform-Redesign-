@@ -184,9 +184,31 @@ webtoon-redesign-final/
 
 ## 🚀 Deployment
 
-### Vercel (Recommended)
+### GitHub Pages (Automated)
 
-This Next.js application is optimized for Vercel deployment:
+This project is configured for automatic deployment to GitHub Pages:
+
+1. **Enable GitHub Pages**
+   - Go to your repository settings
+   - Navigate to "Pages" in the left sidebar
+   - Under "Source", select "GitHub Actions"
+   - Save the settings
+
+2. **Automatic Deployment**
+   - Every push to `main` branch triggers the workflow
+   - The GitHub Actions workflow (`.github/workflows/deploy.yml`) will:
+     - Build the Next.js app as static files
+     - Deploy to GitHub Pages automatically
+   - Your site will be available at: `https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/`
+
+3. **Check Deployment Status**
+   - Go to the "Actions" tab in your repository
+   - You'll see the "Deploy to GitHub Pages" workflow running
+   - Once complete, your site will be live
+
+### Vercel (Alternative)
+
+This Next.js application can also be deployed to Vercel:
 
 1. **Connect Repository**
    - Go to [Vercel](https://vercel.com)
@@ -198,18 +220,14 @@ This Next.js application is optimized for Vercel deployment:
    - Preview deployments for pull requests
    - Zero-configuration needed
 
-3. **Environment Variables** (if needed)
-   - Add any required env vars in Vercel dashboard
-   - Redeploy after adding variables
-
 ### Manual Build & Deploy
 
 ```bash
-# Build the application
+# Build the application for static export
 npm run build
 
-# The .next folder contains the production build
-# Deploy the entire project folder to your hosting service
+# The 'out' folder contains the static files
+# Deploy the 'out' folder to any static hosting service
 ```
 
 ## 📊 Key Improvements
