@@ -8,6 +8,14 @@
 [![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38bdf8.svg)](https://tailwindcss.com/)
 
+## 🌐 Live Demo
+
+**[View Live Site →](https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/)**
+
+The application is automatically deployed to GitHub Pages on every push to the main branch.
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -68,7 +76,7 @@ This redesign prioritizes **aesthetic fidelity**, **behavioral depth**, and **st
 - **Node.js** (v18 or higher recommended)
 - **npm** or **yarn**
 
-### Installation
+### Local Development
 
 1. **Clone the repository**
    ```bash
@@ -87,7 +95,8 @@ This redesign prioritizes **aesthetic fidelity**, **behavioral depth**, and **st
    ```
 
 4. **Open your browser**
-   Navigate to `http://localhost:3000`
+   - Navigate to `http://localhost:3000`
+   - The app will run on your local machine without the GitHub Pages base path
 
 ### Build for Production
 
@@ -95,13 +104,7 @@ This redesign prioritizes **aesthetic fidelity**, **behavioral depth**, and **st
 npm run build
 ```
 
-The production build will be in the `.next` folder.
-
-### Start Production Server
-
-```bash
-npm start
-```
+The static export will be generated in the `out` folder, ready for deployment to GitHub Pages.
 
 ### Code Quality
 
@@ -117,14 +120,17 @@ npm run type-check
 
 ```
 webtoon-redesign-final/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         # GitHub Actions deployment workflow
 ├── src/
-│   ├── app/                    # Next.js App Router pages
+│   ├── app/                   # Next.js App Router pages
 │   │   ├── layout.tsx         # Root layout with LayoutShell
 │   │   ├── page.tsx           # Homepage
 │   │   ├── globals.css        # Global styles
 │   │   ├── home/              # Home page components
 │   │   ├── profile/           # Profile pages (subscriptions, comments, etc.)
-│   │   ├── categories/       # Categories page
+│   │   ├── categories/        # Categories page
 │   │   ├── rankings/          # Rankings page
 │   │   ├── canvas/            # Canvas page
 │   │   ├── shop/              # Shop page
@@ -133,20 +139,18 @@ webtoon-redesign-final/
 │   │   ├── navigation/        # NavRail, TopHeader, LayoutShell
 │   │   ├── layout/            # Footer component
 │   │   ├── home/              # Homepage components
-│   │   ├── ui/                # Reusable UI components
-│   │   └── shared/           # Shared utilities
+│   │   ├── ui/                # Reusable UI components (Radix-based)
+│   │   └── shared/            # Shared utilities
 │   ├── hooks/                 # Custom React hooks
-│   │   └── useNavStore.ts    # Navigation state management
+│   │   └── useNavStore.ts     # Navigation state management
 │   ├── store/                 # Zustand stores
 │   └── utils/                 # Utility functions
 ├── public/                    # Static assets
-├── .gitignore
-├── LICENSE
-├── package.json
-├── README.md
-├── next.config.js
-├── tailwind.config.js
-└── tsconfig.json
+│   └── .nojekyll              # Prevents Jekyll processing on GitHub Pages
+├── next.config.js             # Next.js configuration (static export settings)
+├── tailwind.config.js         # Tailwind CSS customization
+├── tsconfig.json              # TypeScript configuration
+└── package.json               # Dependencies and scripts
 ```
 
 ## 🎨 Design Decisions
@@ -174,61 +178,67 @@ webtoon-redesign-final/
 
 ## 🛠 Tech Stack
 
-- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
+- **[Next.js 14](https://nextjs.org/)** - React framework with App Router and static export
 - **[React 18](https://react.dev/)** - UI library with hooks
 - **[TypeScript 5.2](https://www.typescriptlang.org/)** - Type safety
 - **[Tailwind CSS 3.3](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Zustand](https://zustand-demo.pmnd.rs/)** - State management
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
 - **[Lucide React](https://lucide.dev/)** - Icon library
 
 ## 🚀 Deployment
 
-### GitHub Pages (Automated)
+### GitHub Pages (Automated) ✅
 
-This project is configured for automatic deployment to GitHub Pages:
+This project is configured for **automatic deployment** to GitHub Pages:
 
-1. **Enable GitHub Pages**
-   - Go to your repository settings
-   - Navigate to "Pages" in the left sidebar
-   - Under "Source", select "GitHub Actions"
-   - Save the settings
+#### Live Site
+🌐 **[https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/](https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/)**
 
-2. **Automatic Deployment**
-   - Every push to `main` branch triggers the workflow
-   - The GitHub Actions workflow (`.github/workflows/deploy.yml`) will:
-     - Build the Next.js app as static files
-     - Deploy to GitHub Pages automatically
-   - Your site will be available at: `https://ashborn-047.github.io/Webtoon-Ecosystem-Platform-Redesign-/`
+#### How It Works
 
-3. **Check Deployment Status**
-   - Go to the "Actions" tab in your repository
-   - You'll see the "Deploy to GitHub Pages" workflow running
-   - Once complete, your site will be live
+1. **Automatic Deployment on Push**
+   - Every push to the `main` branch triggers the GitHub Actions workflow
+   - The workflow file: `.github/workflows/deploy.yml`
 
-### Vercel (Alternative)
+2. **Build Process**
+   - Installs dependencies with `npm ci`
+   - Builds the Next.js app as static files with `npm run build`
+   - Exports to `out/` folder (configured in `next.config.js`)
 
-This Next.js application can also be deployed to Vercel:
+3. **GitHub Pages Configuration**
+   - **Source**: GitHub Actions (not branch-based)
+   - **basePath**: `/Webtoon-Ecosystem-Platform-Redesign-/` (matches repo name)
+   - **Static Export**: `output: 'export'` in `next.config.js`
 
-1. **Connect Repository**
-   - Go to [Vercel](https://vercel.com)
-   - Import your GitHub repository
-   - Vercel will auto-detect Next.js settings
+#### Check Deployment Status
 
-2. **Automatic Deployment**
-   - Every push to `main` branch triggers deployment
-   - Preview deployments for pull requests
-   - Zero-configuration needed
+- Go to the **[Actions](https://github.com/Ashborn-047/Webtoon-Ecosystem-Platform-Redesign-/actions)** tab
+- View the "Deploy to GitHub Pages" workflow runs
+- Green checkmark = successfully deployed ✅
 
-### Manual Build & Deploy
+#### First-Time Setup (Already Done)
 
-```bash
-# Build the application for static export
-npm run build
+If you need to set this up on a fork:
+1. Go to **Settings** → **Pages**
+2. Under "Source", select **GitHub Actions**
+3. Push to `main` branch to trigger deployment
 
-# The 'out' folder contains the static files
-# Deploy the 'out' folder to any static hosting service
-```
+### Local vs Production
+
+| Environment | URL | Base Path | Build Command |
+|------------|-----|-----------|---------------|
+| **Local Development** | `http://localhost:3000` | None | `npm run dev` |
+| **GitHub Pages** | `https://ashborn-047.github.io/...` | `/Webtoon-Ecosystem-Platform-Redesign-/` | `npm run build` |
+
+### Alternative: Vercel
+
+This Next.js app can also be deployed to Vercel:
+
+1. Import the repository to [Vercel](https://vercel.com)
+2. Vercel auto-detects Next.js settings
+3. Deploy with one click
+4. **Note**: Remove `basePath` and `assetPrefix` from `next.config.js` for Vercel deployment
 
 ## 📊 Key Improvements
 
@@ -240,6 +250,7 @@ npm run build
 - ✅ Added scroll navigation to Continue Reading
 - ✅ Replaced external images with solid color placeholders
 - ✅ Updated content (The God of High School, Purple Hyacinth)
+- ✅ Configured automated GitHub Pages deployment
 
 ## 🤝 Contributing
 
@@ -263,7 +274,7 @@ All design decisions, research findings, and recommendations are based on public
 **Pushan Bhattacharyya**
 
 - GitHub: [@Ashborn-047](https://github.com/Ashborn-047)
-- Portfolio: [Your Portfolio URL]
+- Portfolio: [Link Coming Soon]
 - LinkedIn: [Your LinkedIn]
 
 ## 📄 License
@@ -274,3 +285,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ for UX research and portfolio demonstration**
 
+*Last Updated: November 2025*
